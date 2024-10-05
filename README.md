@@ -31,8 +31,7 @@ This is a Spring Boot application for tracking weather in major cities in Austra
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/weather-tracking-app.git
-   cd weather-tracking-app
+   git git@github.com:aaronPan28/WeatherTracking.git
    ```
 2. Download dependencies use Maven:
    ```bash
