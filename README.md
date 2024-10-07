@@ -5,7 +5,7 @@ This is a Spring Boot application for tracking weather in major cities in Austra
 ## Technical Requirements
 
 - **Language**: Java
-- **Framework**: Spring Boot 3.x
+- **Framework**: Spring Boot 3.3.4 (!!! Branch SpringBoot2 support Spring Boot 2.7.18 !!!)
 - **Database**: MySQL
 - **Other Libraries**: Spring Data JPA, Spring Web, Lombok, RestTemplate, etc.
 
