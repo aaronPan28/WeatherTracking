@@ -1,12 +1,10 @@
 package com.demo.weatherTracking.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -24,5 +22,5 @@ public class User extends Auditable {
 
     @JsonManagedReference // Manage serialization from User to WeatherProfile
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<WeatherProfile> profiles = new ArrayList<>();
+    private Set<WeatherProfile> profiles;
 }

@@ -31,8 +31,8 @@ public class WeatherController {
         return cityWeatherService.getAllWeatherData();
     }
 
-    @PostMapping("/createProfile")
-    public ResponseEntity<WeatherProfile> createProfile(@RequestParam Long userId, @RequestBody WeatherProfile profile) {
+    @PostMapping("/{userId}/createProfile")
+    public ResponseEntity<WeatherProfile> createProfile(@PathVariable Long userId, @RequestBody WeatherProfile profile) {
         WeatherProfile createdProfile = weatherProfileService.createProfile(userId, profile);
         return new ResponseEntity<>(createdProfile, HttpStatus.CREATED);
     }

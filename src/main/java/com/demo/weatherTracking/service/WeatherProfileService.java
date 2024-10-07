@@ -2,7 +2,6 @@ package com.demo.weatherTracking.service;
 
 import com.demo.weatherTracking.dto.ProfileUpdateDto;
 import com.demo.weatherTracking.dto.WeatherProfileDto;
-import com.demo.weatherTracking.entity.CityWeather;
 import com.demo.weatherTracking.entity.User;
 import com.demo.weatherTracking.entity.WeatherProfile;
 import com.demo.weatherTracking.exceptions.EntityNotFoundException;
@@ -103,12 +102,7 @@ public class WeatherProfileService {
         profile.setCities(weatherProfile.getCities());
 
         // get weather info based on cities
-        List<CityWeather> cityWeathers = new ArrayList<>();
-        for(String city : profile.getCities()){
-            cityWeathers.add(cityWeatherService.getCityWeather(city));
-        }
-
-        profile.setWeather(cityWeathers);
+        profile.setWeather(cityWeatherService.getCityWeatherList(profile.getCities()));
     }
 
     private void checkAndUpdateNicknameAndCities(ProfileUpdateDto profileUpdateDto, WeatherProfile profile) {

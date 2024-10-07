@@ -15,7 +15,6 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CityWeatherService {
@@ -63,8 +62,8 @@ public class CityWeatherService {
         return cityWeatherRepository.findAll();
     }
 
-    public CityWeather getCityWeather(String city) {
-        return cityWeatherRepository.findByName(city);
+    public List<CityWeather> getCityWeatherList(List<String> cities) {
+        return cityWeatherRepository.findByNameIn(cities);
     }
 
     private CityWeather transformResponse(WeatherResponseDto response) {
@@ -93,16 +92,15 @@ public class CityWeatherService {
 
     private void updateOrSaveCityWeather(CityWeather cityWeather) throws Exception {
         // Check for existing record
-        Optional<CityWeather> existingWeather = Optional.ofNullable(cityWeatherRepository.findByName(cityWeather.getName()));
+        CityWeather weatherToUpdate = cityWeatherRepository.findByName(cityWeather.getName());
 
-        if (existingWeather.isEmpty()) {
+        if (weatherToUpdate == null) {
             // save a new record
             cityWeatherRepository.save(cityWeather);
             return;
         }
 
         // update the exist record
-        CityWeather weatherToUpdate = existingWeather.get();
         weatherToUpdate.setName(cityWeather.getName());
         weatherToUpdate.setTemp(cityWeather.getTemp());
         weatherToUpdate.setFeels_like(cityWeather.getFeels_like());
