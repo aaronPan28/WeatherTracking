@@ -16,7 +16,7 @@ GET http://localhost:8080/api/weather/all
 Content-Type: application/json
 
 ### create a weather profile
-POST http://localhost:8080/api/weather/createProfile?userId=1
+POST http://localhost:8080/api/weather/1/createProfile
 Content-Type: application/json
 
 {
